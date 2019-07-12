@@ -18,13 +18,16 @@ def get_indices_of_item_weights(weights, length, limit):
     for i in range(0, len(weights)):
         hash_table_insert(ht, weights[i],  i)
 
-    # will continue later
-
+    #
+    for j in range(0, len(weights)):
+        entry = hash_table_retrieve(ht, limit - weights[j])
+        if entry is not None:
+            return (entry, j)
     return None
 
 
 def print_answer(answer):
-    if answer is None:
+    if answer is not None:
         print(str(answer[0] + " " + answer[1]))
     else:
         print("None")
