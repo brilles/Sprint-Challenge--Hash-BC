@@ -37,14 +37,10 @@ def valid_proof(last_hash, proof):
 
     IE:  last_hash: ...999123456, new hash 123456888...
     """
-    last_hash_str = str(last_hash)
-    last_six_last_hash = last_hash_str[-6:]
 
     guess = f'{proof}'.encode()
     guess_hash = hashlib.sha256(guess).hexdigest()
-
-    # old hash vs new hash
-    return last_six_last_hash == guess_hash[:6]
+    return str(last_hash)[-6:] == guess_hash[:6]
 
 
 if __name__ == '__main__':
